@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
-import Provider from "@/components/provider";
+import { ThemeProvider } from "next-themes";
 import { Separator } from "@/components/ui/separator";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,11 +38,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#121212] dark:text-white`}
       >
-        <Provider>
+        <ThemeProvider attribute="data-mode">
           <Header />
-          <Separator className="mb-4" />
-          {children}
-        </Provider>
+          <Separator className="mt-4" />
+          <Suspense fallback={<Loading />}>{children}</Suspense>
+        </ThemeProvider>
       </body>
     </html>
   );

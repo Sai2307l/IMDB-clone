@@ -24,12 +24,12 @@ export default function Menu() {
     <Menubar className="h-16 px-3 mb-1 space-x-5 justify-between items-center dark:bg-[#1C1C1C] dark:border-b-[#2B2B2B]">
       <MenubarMenu>
         <div className="flex items-center space-x-2 justify-center dark:text-white">
-          <MenubarTrigger className="h-9">
-            <Link href="/home">Home</Link>
-          </MenubarTrigger>
-          <MenubarTrigger className="h-9">
-            <Link href="/about">About</Link>
-          </MenubarTrigger>
+          <Link href="/home">
+            <MenubarTrigger className="h-9">Home</MenubarTrigger>
+          </Link>
+          <Link href="/about">
+            <MenubarTrigger className="h-9">About</MenubarTrigger>
+          </Link>
         </div>
         <div className="flex items-center space-x-2 justify-center float-end ml-auto">
           <Button
