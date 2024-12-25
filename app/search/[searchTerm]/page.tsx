@@ -5,7 +5,7 @@ import Card from "@/components/list/movie-card";
 import { getMovies } from "@/utils/fetchData";
 import Link from "next/link";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export default function MoviePage({
   params,
