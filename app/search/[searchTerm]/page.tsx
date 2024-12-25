@@ -5,16 +5,14 @@ import Card from "@/components/list/movie-card";
 import { getMovies } from "@/utils/fetchData";
 import Link from "next/link";
 
-interface MoviePageProps {
-  readonly params: {
-    id: number;
-  };
-}
-
 const API_KEY = process.env.API_KEY;
 
-export default function MoviePage({ params }: Readonly<MoviePageProps>) {
-  const param = use(params);
+export default function MoviePage({
+  params,
+}: {
+  readonly params: Promise<{ searchTerm: string }>;
+}) {
+  const { searchTerm } = use(params);
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchTerm}&language=en-US&page=1&include_adult=false`;
   const [movies, setMovies] = useState<Movie[]>([]);
 

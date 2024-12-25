@@ -5,17 +5,15 @@ import { getMovie } from "@/utils/fetchData";
 import { Movie } from "@/types/types";
 import { Separator } from "@/components/ui/separator";
 
-interface MoviePageProps {
-  readonly params: {
-    id: number;
-  };
-}
 const API_KEY = process.env.API_KEY;
-export default function MoviePage({ params }: Readonly<MoviePageProps>) {
+export default function MoviePage({
+  params,
+}: {
+  readonly params: Promise<{ id: number }>;
+}) {
   const { id } = use(params);
   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
   const [movie, setMovie] = useState<Movie>();
-  console.log(id);
   useEffect(() => {
     const options = {
       next: {
